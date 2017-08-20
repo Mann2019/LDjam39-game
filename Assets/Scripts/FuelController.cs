@@ -17,6 +17,7 @@ public class FuelController : MonoBehaviour {
 	public Slider engineSlider;
 	public Color fullFuelColor = Color.green;
 	public Color zeroFuelColor = Color.red;
+    public float fuelUp;
 
 	void Start () {
 		startEngineFuel=0f;
@@ -44,9 +45,25 @@ public class FuelController : MonoBehaviour {
 	
 	void Update () {
 		if(Input.GetKeyDown(KeyCode.Space)&&reserveFuel!=0) {
-			engineFuel = engineFuel+10f;
+            if (engineFuel < 91f)
+            {
+                engineFuel = engineFuel + 10f;
+            }
 			reserveFuel = reserveFuel-10f;
 			SetEngineUI();
 		}
 	}
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Fuel"))
+        {
+            if(reserveFuel<91f)
+            {
+                reserveFuel = reserveFuel + fuelUp;
+            }
+            SetEngineUI();
+            Destroy(other.gameObject);
+        }
+    }
 }

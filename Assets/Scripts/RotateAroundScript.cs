@@ -3,14 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RotateAroundScript : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
+    public float rotateBy;
 	void Update () {
-		
+        transform.RotateAround(Vector3.up, Vector3.zero, rotateBy*Time.deltaTime);
 	}
 }

@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 4677603120958036}
   - component: {fileID: 54781593142541748}
   - component: {fileID: 65015733810860228}
+  - component: {fileID: 114293918006805206}
   m_Layer: 0
   m_Name: Fuel
   m_TagString: Fuel
@@ -110,7 +111,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1973813888735490}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.2, z: 0}
+  m_LocalPosition: {x: 0, y: 0.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4405472029830844}
@@ -237,3 +238,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.33, y: 0.3, z: 0.25}
   m_Center: {x: 0, y: 0.2, z: 0}
+--- !u!114 &114293918006805206
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1548265536552986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95cd49a868af8b047af10a574e09b2af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateBy: 20
