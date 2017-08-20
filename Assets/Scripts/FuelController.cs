@@ -44,7 +44,8 @@ public class FuelController : MonoBehaviour {
 	}
 	
 	void Update () {
-		if(Input.GetKeyDown(KeyCode.Space)&&reserveFuel!=0) {
+		///if(Input.GetKeyDown(KeyCode.Space)&&reserveFuel!=0) {
+        if (Input.GetTouch(0).phase == TouchPhase.Began && reserveFuel != 0) {
             if (engineFuel < 91f)
             {
                 engineFuel = engineFuel + 10f;
