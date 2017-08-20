@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Reserve Slider
   - Engine Slider
+  - Fuel
   layers:
   - Default
   - TransparentFX
