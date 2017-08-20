@@ -19,6 +19,6 @@ public class CameraController : MonoBehaviour {
 	}
 
 	void LateUpdate () {
-		transform.Translate(Vector3.right*Time.deltaTime*-speed*camSpeed, Space.Self);
+		transform.Translate(Vector3.forward*Time.deltaTime*-speed*camSpeed, Space.World);
 	}
 }
