@@ -24,7 +24,8 @@ public class GameController : MonoBehaviour {
 
     private void Update()
     {
-        roadSpeed = pm.speed * pm.resultantFuel * -100;
+        roadSpeed = pm.speed * -100;
+        //roadSpeed = pm.speed;
     }
 
     public void GenerateRoad()

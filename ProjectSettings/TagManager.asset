@@ -7,6 +7,8 @@ TagManager:
   - Reserve Slider
   - Engine Slider
   - Fuel
+  - Bound_Right
+  - Bound_Left
   layers:
   - Default
   - TransparentFX
