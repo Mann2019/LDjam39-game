@@ -9,6 +9,7 @@ TagManager:
   - Fuel
   - Bound_Right
   - Bound_Left
+  - Road
   layers:
   - Default
   - TransparentFX

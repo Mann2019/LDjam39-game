@@ -33,4 +33,12 @@ public class PlayerMover : MonoBehaviour {
             0.173f, 
             transform.position.z);
 	}
+
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.CompareTag("Road"))
+        {
+            Destroy(other.gameObject);
+        }
+    }
 }
