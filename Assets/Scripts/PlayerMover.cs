@@ -30,7 +30,7 @@ public class PlayerMover : MonoBehaviour {
 
         transform.position = new Vector3(
             Mathf.Clamp(transform.position.x, -xMin, xMax),
-            0.173f, 
+            transform.position.y, 
             transform.position.z);
 	}
 
