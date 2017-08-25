@@ -10,6 +10,7 @@ TagManager:
   - Bound_Right
   - Bound_Left
   - Road
+  - Enemy
   layers:
   - Default
   - TransparentFX

@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour {
     public Vector3 spawnValues;
     public float fuelProduceTime;
     public float fuelProduceRate;
+    public Vector3 roadPos;
 
     private Vector3 v;
     private GameObject g;
@@ -20,19 +21,18 @@ public class GameController : MonoBehaviour {
         pm = car.GetComponent<PlayerMover>();
         InvokeRepeating("GenerateRoad", invokeTime, invokeRate);
         InvokeRepeating("ProduceFuel", fuelProduceTime, fuelProduceRate);
+        InvokeRepeating("MoveRoad", 0.3f, 0.3f);
 	}
 
-    private void Update()
+    public void MoveRoad()
     {
-        roadSpeed = pm.speed * -150;
-        //roadSpeed = pm.speed;
+        roadLead.transform.position = roadLead.transform.position + roadPos;
     }
 
     public void GenerateRoad()
     {
         v = roadLead.transform.position;
         g = Instantiate(roadPrefab, v, Quaternion.identity) as GameObject;
-        roadLead.transform.Translate(Vector3.forward * Time.deltaTime * roadSpeed, Space.Self);
     }
 
     private void ProduceFuel()

@@ -31,7 +31,7 @@ public class FuelController : MonoBehaviour {
 
 	public void UseFuel() {
 		if(engineFuel!=0) {
-			engineFuel=engineFuel-5f;
+			engineFuel=engineFuel-7.5f;
 			SetEngineUI();
 		}
 		resultingFuel=engineFuel/75f;
