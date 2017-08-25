@@ -6,13 +6,20 @@ public class CameraController : MonoBehaviour {
 
 	public GameObject car;
 	public float speed;
+    public float speedUp;
 
 	private PlayerMover pm;
 	private float camSpeed;
 
 	void Start() {
 		pm=car.GetComponent<PlayerMover>();
+        InvokeRepeating("SpeedUp", 30f, 30f);
 	}
+
+    void SpeedUp()
+    {
+        speed = speed + speedUp;
+    }
 
 	void Update() {
 		camSpeed = pm.resultantFuel;

@@ -30,7 +30,7 @@ public class FuelController : MonoBehaviour {
 	}
 
 	public void UseFuel() {
-		if(engineFuel!=0) {
+		if(engineFuel>0) {
 			engineFuel=engineFuel-7.5f;
 			SetEngineUI();
 		}
@@ -46,7 +46,7 @@ public class FuelController : MonoBehaviour {
 	
 	void Update () {
 		if(Input.GetKeyDown(KeyCode.Space)&&reserveFuel!=0) {
-            //if (Input.GetTouch(0).phase == TouchPhase.Began && reserveFuel != 0) {
+        //if (Input.GetTouch(0).phase == TouchPhase.Began && reserveFuel != 0) {
             //fuelPump.Play();
             if (engineFuel < 91f)
             {

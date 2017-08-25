@@ -14,7 +14,6 @@ public class GameController : MonoBehaviour {
 
     private Vector3 v;
     private GameObject g;
-    private float roadSpeed;
     private PlayerMover pm;
 
     void Start () {

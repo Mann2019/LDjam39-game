@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMover : MonoBehaviour {
 
 	public float speed;
+    public float speedUp;
 	public float resultantFuel;
     public float xMin;
     public float xMax;
@@ -15,7 +16,13 @@ public class PlayerMover : MonoBehaviour {
 	void Start () {
 		rb = gameObject.GetComponent<Rigidbody>();
 		fc = gameObject.GetComponent<FuelController>();
+        InvokeRepeating("SpeedUp", 30f, 30f);
 	}
+
+    void SpeedUp()
+    {
+        speed = speed + speedUp;
+    }
 
 	void Update () {
 		resultantFuel=fc.resultingFuel+0.5f;
