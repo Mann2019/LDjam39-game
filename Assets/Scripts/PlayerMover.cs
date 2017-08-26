@@ -44,8 +44,8 @@ public class PlayerMover : MonoBehaviour {
     {
         if(other.CompareTag("Enemy"))
         {
-            //UnityEditor.EditorApplication.isPlaying = false;
-            Application.Quit();
+            UnityEditor.EditorApplication.isPlaying = false;
+            //Application.Quit();
         }
     }
     private void OnTriggerExit(Collider other)
