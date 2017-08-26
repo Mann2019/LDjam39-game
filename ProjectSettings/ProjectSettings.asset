@@ -141,7 +141,7 @@ PlayerSettings:
   targetPixelDensity: 200
   resolutionScalingMode: 1
   applicationIdentifier:
-    Android: com.Company.FuelOut
+    Android: com.Mampee.FuelOut
   buildNumber: {}
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 22
