@@ -40,7 +40,13 @@ public class PlayerMover : MonoBehaviour {
             transform.position.y, 
             transform.position.z);
 	}
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Enemy"))
+        {
+            UnityEditor.EditorApplication.isPlaying = false;
+        }
+    }
     private void OnTriggerExit(Collider other)
     {
         if(other.CompareTag("Road"))
