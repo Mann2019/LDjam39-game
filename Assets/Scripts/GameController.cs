@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 public class GameController : MonoBehaviour {
     public float invokeTime;
@@ -6,15 +7,21 @@ public class GameController : MonoBehaviour {
     public GameObject roadPrefab;
     public GameObject roadLead;
     public GameObject car;
+    public GameObject thief;
     public GameObject fuelPrefab;
-    public Vector3 spawnValues;
     public float fuelProduceTime;
     public float fuelProduceRate;
     public Vector3 roadPos;
+    public Vector3 fuelSpawnValues;
+    public float[] fuelSpawnPoints;
+
+    public bool endGame=false;
+    public bool pauseGame=false;
 
     private Vector3 v;
     private GameObject g;
     private PlayerMover pm;
+    private float spawnPoint;
 
     void Start () {
         pm = car.GetComponent<PlayerMover>();
@@ -36,7 +43,10 @@ public class GameController : MonoBehaviour {
 
     private void ProduceFuel()
     {
-        Vector3 spawnPos = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z+car.transform.position.z);
+        int i = Random.Range(0, fuelSpawnPoints.Length);
+        spawnPoint = fuelSpawnPoints[i];
+        Vector3 spawnPos = new Vector3(spawnPoint, fuelSpawnValues.y, fuelSpawnValues.z+car.transform.position.z);
+        //Vector3 spawnPos = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z+car.transform.position.z);
         Instantiate(fuelPrefab, spawnPos, Quaternion.identity);
     }
 }

@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class TheifAI : MonoBehaviour {
 
-    public float[] speeds;
     public float speedFactor;
     public Transform policeCar;
+    public float startSpeed_min;
+    public float startSpeed_max;
 
     private int speedFlag = 0;
     private float speed;
 
 	void Start () {
-        int i = Random.Range(0, speeds.Length);
-        speed = speeds[i];
+        speed = Random.Range(startSpeed_min, startSpeed_max);
         InvokeRepeating("CheckDistance", 3f, 0.3f);
 	}
 
 	void Update () {
         transform.Translate(Vector3.forward*Time.deltaTime*-speed, Space.World);
-	}
+    }
 
     void CheckDistance()
     {
@@ -33,7 +33,7 @@ public class TheifAI : MonoBehaviour {
             {
                 SpeedUp();
                 speedFlag = 1;
-                Invoke("SpeedDown", 3f);
+                Invoke("SpeedDown", 4f);
             }
         }
     }

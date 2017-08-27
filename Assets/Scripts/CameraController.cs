@@ -23,9 +23,11 @@ public class CameraController : MonoBehaviour {
 
 	void Update() {
 		camSpeed = pm.resultantFuel;
-	}
+        transform.Translate(Vector3.forward * Time.deltaTime * -speed * camSpeed, Space.World);
+    }
 
 	void LateUpdate () {
-		transform.Translate(Vector3.forward*Time.deltaTime*-speed*camSpeed, Space.World);
+        //transform.Translate(Vector3.forward*Time.deltaTime*-speed*camSpeed, Space.World);
+        //transform.LookAt(car.transform);
 	}
 }

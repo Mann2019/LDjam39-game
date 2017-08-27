@@ -48,11 +48,11 @@ public class FuelController : MonoBehaviour {
 		if(Input.GetKeyDown(KeyCode.Space)&&reserveFuel!=0) {
         //if (Input.GetTouch(0).phase == TouchPhase.Began && reserveFuel != 0) {
             //fuelPump.Play();
-            if (engineFuel < 91f)
+            if (engineFuel < 95f)
             {
                 engineFuel = engineFuel + 10f;
+                reserveFuel = reserveFuel - 10f;
             }
-			reserveFuel = reserveFuel-10f;
 			SetEngineUI();
 		}
 	}
