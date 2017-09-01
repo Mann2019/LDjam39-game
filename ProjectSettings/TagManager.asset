@@ -11,6 +11,7 @@ TagManager:
   - Bound_Left
   - Road
   - Enemy
+  - Coin
   layers:
   - Default
   - TransparentFX
