@@ -31,8 +31,8 @@ public class PlayerMover : MonoBehaviour {
             rb.MovePosition(rb.position + Vector3.left);
 			
 		}
-		else if(Input.GetKeyDown(KeyCode.LeftArrow)) {
-            rb.MovePosition(rb.position + Vector3.right);
+        else if(Input.GetKeyDown(KeyCode.LeftArrow)) {
+                rb.MovePosition(rb.position + Vector3.right);
 		}
 
         transform.position = new Vector3(
@@ -44,8 +44,9 @@ public class PlayerMover : MonoBehaviour {
     {
         if(other.CompareTag("Enemy"))
         {
-            UnityEditor.EditorApplication.isPlaying = false;
+            //UnityEditor.EditorApplication.isPlaying = false;
             //Application.Quit();
+            Destroy(other.gameObject);
         }
     }
     private void OnTriggerExit(Collider other)

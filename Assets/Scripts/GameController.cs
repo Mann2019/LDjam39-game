@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Serialization;
 
 public class GameController : MonoBehaviour {
     public float invokeTime;
@@ -56,7 +55,6 @@ public class GameController : MonoBehaviour {
         int i = Random.Range(0, fuelSpawnPoints.Length);
         spawnPoint = fuelSpawnPoints[i];
         Vector3 spawnPos = new Vector3(spawnPoint, fuelSpawnValues.y, fuelSpawnValues.z+car.transform.position.z);
-        //Vector3 spawnPos = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z+car.transform.position.z);
         Instantiate(fuelPrefab, spawnPos, Quaternion.identity);
     }
 

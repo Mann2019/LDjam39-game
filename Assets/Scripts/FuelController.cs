@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class FuelController : MonoBehaviour {
@@ -18,7 +16,6 @@ public class FuelController : MonoBehaviour {
 	public Color fullFuelColor = Color.green;
 	public Color zeroFuelColor = Color.red;
     public float fuelUp;
-    //public AudioSource fuelPump;
 
 	void Start () {
 		startEngineFuel=0f;
@@ -47,7 +44,6 @@ public class FuelController : MonoBehaviour {
 	void Update () {
 		if(Input.GetKeyDown(KeyCode.Space)&&reserveFuel!=0) {
         //if (Input.GetTouch(0).phase == TouchPhase.Began && reserveFuel != 0) {
-            //fuelPump.Play();
             if (engineFuel < 97f)
             {
                 engineFuel = engineFuel + 10f;

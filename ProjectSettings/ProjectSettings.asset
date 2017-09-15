@@ -122,7 +122,13 @@ PlayerSettings:
     16:9: 1
     Others: 1
   bundleVersion: 1.0
-  preloadedAssets: []
+  preloadedAssets:
+  - {fileID: 1466075961337732, guid: 53e554fa3f0c9074a9c41b8a7d0ed5f8, type: 2}
+  - {fileID: 1548265536552986, guid: 906c0fd0e2e7d0846abced42cfa3944f, type: 2}
+  - {fileID: 100000, guid: 1b19c03acc01ea54b847badb2b169e1b, type: 3}
+  - {fileID: 11500000, guid: 0c036a1b6bccc84448c3798c394bd52c, type: 3}
+  - {fileID: 1883870256336696, guid: e54001a42c13fbf4fbf4af2eb1d5beb0, type: 2}
+  - {fileID: 100000, guid: 424d10e6862b78947b43e3c900a837c0, type: 3}
   metroInputSource: 0
   m_HolographicPauseOnTrackingLoss: 1
   xboxOneDisableKinectGpuReservation: 0
@@ -138,7 +144,7 @@ PlayerSettings:
       depthFormat: 1
   protectGraphicsMemory: 0
   useHDRDisplay: 0
-  targetPixelDensity: 200
+  targetPixelDensity: 500
   resolutionScalingMode: 1
   applicationIdentifier:
     Android: com.Mampee.FuelOut
@@ -155,8 +161,8 @@ PlayerSettings:
   ForceSDCardPermission: 0
   CreateWallpaper: 0
   APKExpansionFiles: 0
-  keepLoadedShadersAlive: 0
-  StripUnusedMeshComponents: 0
+  keepLoadedShadersAlive: 1
+  StripUnusedMeshComponents: 1
   VertexChannelCompressionMask:
     serializedVersion: 2
     m_Bits: 238
@@ -219,7 +225,7 @@ PlayerSettings:
   androidSplashScreen: {fileID: 0}
   AndroidKeystoreName: 
   AndroidKeyaliasName: 
-  AndroidTVCompatibility: 1
+  AndroidTVCompatibility: 0
   AndroidIsGame: 1
   androidEnableBanner: 1
   m_AndroidBanners:
@@ -587,12 +593,15 @@ PlayerSettings:
     daydream:
       daydreamIconForeground: {fileID: 0}
       daydreamIconBackground: {fileID: 0}
-  cloudServicesEnabled: {}
+  cloudServicesEnabled:
+    Build: 1
+    Collab: 1
+    UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: 
-  projectName: 
-  organizationId: 
+  cloudProjectId: ed37b327-3751-4302-8355-28457dd31a81
+  projectName: FuelOut
+  organizationId: guru-nanak-dev-university-amritsar
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
