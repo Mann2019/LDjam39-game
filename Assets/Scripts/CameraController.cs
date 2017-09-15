@@ -1,35 +1,28 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CameraController : MonoBehaviour {
 
-	public GameObject car;
+	//public GameObject car;
 	public float speed;
     public float speedUp;
 
-	private PlayerMover pm;
+	//private PlayerMover pm;
 	private float camSpeed;
 
 	void Start() {
-		pm=car.GetComponent<PlayerMover>();
+		//pm=car.GetComponent<PlayerMover>();
         InvokeRepeating("SpeedUp", 30f, 30f);
 	}
 
     void SpeedUp()
     {
-        speed = speed + speedUp;
-    }
-
-	void Update() {
-		//camSpeed = pm.resultantFuel;
-        //transform.Translate(Vector3.forward * Time.deltaTime * -speed * camSpeed, Space.World);
+        //speed = speed + speedUp;
+        speed = speed + PlayerMover.speedUp;
     }
 
 	void LateUpdate () {
-        //transform.Translate(Vector3.forward*Time.deltaTime*-speed*camSpeed, Space.World);
-        //transform.LookAt(car.transform);
-        camSpeed = pm.resultantFuel;
+        //camSpeed = pm.resultantFuel;
+        camSpeed = PlayerMover.resultantFuel;
         transform.Translate(Vector3.forward * Time.deltaTime * -speed * camSpeed, Space.World);
     }
 }

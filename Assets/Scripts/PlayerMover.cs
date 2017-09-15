@@ -1,12 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerMover : MonoBehaviour {
 
 	public float speed;
-    public float speedUp;
-	public float resultantFuel;
+    public static float speedUp;
+	public static float resultantFuel;
     public float xMin;
     public float xMax;
 
