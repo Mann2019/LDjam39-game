@@ -23,15 +23,13 @@ public class FuelController : MonoBehaviour {
 		engineFuel=startEngineFuel;
 		reserveFuel=startReserveFuel;
 		SetEngineUI();
-		InvokeRepeating("UseFuel", 0.5f, 0.5f);
+		InvokeRepeating("UseFuel", 1f, 1f);
 	}
 
 	public void UseFuel() {
-		if(engineFuel>0) {
-			engineFuel=engineFuel-7.5f;
-			SetEngineUI();
-		}
-		resultingFuel=engineFuel/75f;
+        engineFuel = engineFuel-10f;
+		SetEngineUI();
+		resultingFuel = engineFuel/75f;
 	}
 
 	void SetEngineUI() {
@@ -42,13 +40,12 @@ public class FuelController : MonoBehaviour {
 	}
 	
 	void Update () {
-		if(Input.GetKeyDown(KeyCode.Space)&&reserveFuel!=0) {
-        //if (Input.GetTouch(0).phase == TouchPhase.Began && reserveFuel != 0) {
-            if (engineFuel < 97f)
-            {
-                engineFuel = engineFuel + 10f;
-                reserveFuel = reserveFuel - 10f;
-            }
+        reserveFuel = Mathf.Clamp(reserveFuel, 0f, 100f);
+        engineFuel = Mathf.Clamp(engineFuel, 0f, 100f);
+        if (Input.GetKeyDown(KeyCode.Space)) {
+        //if (Input.GetTouch(0).phase == TouchPhase.Began) {
+            engineFuel = engineFuel + 10f;
+            reserveFuel = reserveFuel - 10f;
 			SetEngineUI();
 		}
 	}
@@ -57,10 +54,7 @@ public class FuelController : MonoBehaviour {
     {
         if(other.CompareTag("Fuel"))
         {
-            if(reserveFuel<91f)
-            {
-                reserveFuel = reserveFuel + fuelUp;
-            }
+            reserveFuel = reserveFuel + fuelUp;
             SetEngineUI();
             Destroy(other.gameObject);
         }

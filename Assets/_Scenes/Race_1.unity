@@ -152,14 +152,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c036a1b6bccc84448c3798c394bd52c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  invokeTime: 0.3
-  invokeRate: 0.3
   roadPrefab: {fileID: 1883870256336696, guid: e54001a42c13fbf4fbf4af2eb1d5beb0, type: 2}
   roadLead: {fileID: 1534728563}
   car: {fileID: 726226728}
   thief: {fileID: 1541021129}
   fuelPrefab: {fileID: 1548265536552986, guid: 906c0fd0e2e7d0846abced42cfa3944f, type: 2}
   coinPrefab: {fileID: 1466075961337732, guid: 53e554fa3f0c9074a9c41b8a7d0ed5f8, type: 2}
+  roadProduceTime: 2
+  roadProduceRate: 2
   fuelProduceTime: 3
   fuelProduceRate: 3
   roadPos: {x: 0, y: 0, z: -60}
@@ -218,7 +218,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 12, y: 1, z: 60}
-  m_Center: {x: 0, y: 0.5, z: 20}
+  m_Center: {x: 0, y: 0, z: -10}
 --- !u!114 &1281876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,8 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66019f83c3262ca4bb7fe6b39708cea8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  car: {fileID: 0}
-  speed: 0
+  speed: 7
 --- !u!1 &16889364
 GameObject:
   m_ObjectHideFlags: 0
@@ -653,7 +652,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 33
+  field of view: 40
   orthographic: 1
   orthographic size: 1
   m_Depth: -1
@@ -695,8 +694,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f85a9b1e320131f409c0be0eac44935e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 8
-  speedUp: 0.12
+  speed: 7
 --- !u!95 &294077228
 Animator:
   serializedVersion: 3
@@ -899,6 +897,22 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 82bb2c676d6a5cf44b781ef139058aba, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 82bb2c676d6a5cf44b781ef139058aba, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 82bb2c676d6a5cf44b781ef139058aba, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: 82bb2c676d6a5cf44b781ef139058aba, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 82bb2c676d6a5cf44b781ef139058aba, type: 3}
   m_IsPrefabParent: 0
@@ -1065,6 +1079,26 @@ Prefab:
       propertyPath: m_Name
       value: Tire_2
       objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: 82bb2c676d6a5cf44b781ef139058aba, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 82bb2c676d6a5cf44b781ef139058aba, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 82bb2c676d6a5cf44b781ef139058aba, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 82bb2c676d6a5cf44b781ef139058aba, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 82bb2c676d6a5cf44b781ef139058aba, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 82bb2c676d6a5cf44b781ef139058aba, type: 3}
   m_IsPrefabParent: 0
@@ -1189,7 +1223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 390b5dfa7335ccf418793786690a9b2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 8
+  speed: 7
   xMin: 0.9
   xMax: 1.1
 --- !u!114 &726226731
@@ -1509,6 +1543,26 @@ Prefab:
       propertyPath: m_Name
       value: Tire_3
       objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: 82bb2c676d6a5cf44b781ef139058aba, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 82bb2c676d6a5cf44b781ef139058aba, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 82bb2c676d6a5cf44b781ef139058aba, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 82bb2c676d6a5cf44b781ef139058aba, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 82bb2c676d6a5cf44b781ef139058aba, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 82bb2c676d6a5cf44b781ef139058aba, type: 3}
   m_IsPrefabParent: 0
@@ -1691,11 +1745,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 65716481812561568, guid: e54001a42c13fbf4fbf4af2eb1d5beb0,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e54001a42c13fbf4fbf4af2eb1d5beb0, type: 2}
   m_IsPrefabParent: 0
@@ -1710,6 +1759,8 @@ GameObject:
   - component: {fileID: 984215866}
   - component: {fileID: 984215865}
   - component: {fileID: 984215864}
+  - component: {fileID: 984215868}
+  - component: {fileID: 984215867}
   m_Layer: 0
   m_Name: Side_road
   m_TagString: Untagged
@@ -1772,6 +1823,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 90, y: 90, z: 0}
+--- !u!65 &984215867
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 984215863}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 6.1232336e-17}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &984215868
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 984215863}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1032214754
 GameObject:
   m_ObjectHideFlags: 0
@@ -1928,6 +2006,26 @@ Prefab:
     - target: {fileID: 100002, guid: 82bb2c676d6a5cf44b781ef139058aba, type: 3}
       propertyPath: m_Name
       value: Tire_4
+      objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: 82bb2c676d6a5cf44b781ef139058aba, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 82bb2c676d6a5cf44b781ef139058aba, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 82bb2c676d6a5cf44b781ef139058aba, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 82bb2c676d6a5cf44b781ef139058aba, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 82bb2c676d6a5cf44b781ef139058aba, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 82bb2c676d6a5cf44b781ef139058aba, type: 3}
@@ -2250,8 +2348,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedFactor: 7
   policeCar: {fileID: 726226729}
-  startSpeed_min: 10
-  startSpeed_max: 11
+  startSpeed_min: 9
+  startSpeed_max: 10
 --- !u!95 &1541021132
 Animator:
   serializedVersion: 3

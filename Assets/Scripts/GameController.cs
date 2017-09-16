@@ -2,14 +2,16 @@
 using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
-    public float invokeTime;
-    public float invokeRate;
+
     public GameObject roadPrefab;
     public GameObject roadLead;
     public GameObject car;
     public GameObject thief;
     public GameObject fuelPrefab;
     public GameObject coinPrefab;
+
+    public float roadProduceTime;
+    public float roadProduceRate;
     public float fuelProduceTime;
     public float fuelProduceRate;
     public Vector3 roadPos;
@@ -28,10 +30,10 @@ public class GameController : MonoBehaviour {
 
     void Start () {
         pm = car.GetComponent<PlayerMover>();
-        InvokeRepeating("GenerateRoad", invokeTime, invokeRate);
+        InvokeRepeating("GenerateRoad", roadProduceTime, roadProduceRate);
         InvokeRepeating("ProduceFuel", fuelProduceTime, fuelProduceRate);
-        InvokeRepeating("ProduceCoins", fuelProduceTime + 1f, fuelProduceRate + 1f);
-        InvokeRepeating("MoveRoad", 0.3f, 0.3f);
+        InvokeRepeating("ProduceCoins", fuelProduceTime + 1.5f, fuelProduceRate + 1.5f);
+        InvokeRepeating("MoveRoad", roadProduceTime, roadProduceRate);
 	}
 
     private void Update()

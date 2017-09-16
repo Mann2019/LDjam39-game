@@ -2,16 +2,29 @@
 
 public class MoveGameController : MonoBehaviour {
 
-    public GameObject car;
     public float speed;
+    private float moveSpeed;
 
-	// Use this for initialization
 	void Start () {
-		
+        InvokeRepeating("SpeedUp", 30f, 30f);
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    private void SpeedUp()
+    {
+        speed = speed + PlayerMover.speedUp;
+    }
+
+    private void LateUpdate()
+    {
+        moveSpeed = PlayerMover.resultantFuel;
+        transform.Translate(Vector3.forward*Time.deltaTime*-speed*moveSpeed, Space.World);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if(!(other.CompareTag("Enemy")||other.CompareTag("Player")))
+        {
+            Destroy(other.gameObject);
+        }
+    }
 }

@@ -1,11 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class RotateCoins : MonoBehaviour {
-	
-	// Update is called once per frame
-	void Update () {
+    //rotate coins and other collectibles..
+	void FixedUpdate () {
         transform.Rotate(Vector3.up, 2);
     }
 }
