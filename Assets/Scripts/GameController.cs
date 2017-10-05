@@ -14,13 +14,14 @@ public class GameController : MonoBehaviour {
     public float roadProduceRate;
     public float fuelProduceTime;
     public float fuelProduceRate;
+    public float fuelSpawnZ;
     public Vector3 roadPos;
-    public Vector3 fuelSpawnValues;
     public float[] fuelSpawnPoints;
     public int[] coinValues;
     public bool endGame=false;
     public bool pauseGame=false;
     public Text coinText;
+
     public static int currentCoinValue = 0;
 
     private Vector3 v;
@@ -56,7 +57,7 @@ public class GameController : MonoBehaviour {
     {
         int i = Random.Range(0, fuelSpawnPoints.Length);
         spawnPoint = fuelSpawnPoints[i];
-        Vector3 spawnPos = new Vector3(spawnPoint, fuelSpawnValues.y, fuelSpawnValues.z+car.transform.position.z);
+        Vector3 spawnPos = new Vector3(spawnPoint, 0.0f, fuelSpawnZ+car.transform.position.z);
         Instantiate(fuelPrefab, spawnPos, Quaternion.identity);
     }
 
@@ -64,13 +65,13 @@ public class GameController : MonoBehaviour {
     {
         int i = Random.Range(0, fuelSpawnPoints.Length);
         spawnPoint = fuelSpawnPoints[i];
-        Vector3 spawnPos = new Vector3(spawnPoint, fuelSpawnValues.y+0.25f, fuelSpawnValues.z + car.transform.position.z);
-        GameObject firstCoin = Instantiate(coinPrefab, spawnPos, Quaternion.identity);
+        Vector3 firstPos = new Vector3(spawnPoint, 0.25f, fuelSpawnZ + car.transform.position.z);
+        GameObject firstCoin = Instantiate(coinPrefab, firstPos, Quaternion.identity);
         int k = Random.Range(0, coinValues.Length);
         int num = coinValues[k];
         for (int j=0;j<num;j++)
         {
-            Vector3 nextPos = new Vector3(firstCoin.transform.position.x, fuelSpawnValues.y+0.25f, firstCoin.transform.position.z - 1f);
+            Vector3 nextPos = new Vector3(firstCoin.transform.position.x, 0.25f, firstCoin.transform.position.z - 1f);
             GameObject nextCoin = Instantiate(coinPrefab, nextPos, Quaternion.identity);
             firstCoin = nextCoin;
         }

@@ -144,13 +144,13 @@ PlayerSettings:
       depthFormat: 1
   protectGraphicsMemory: 0
   useHDRDisplay: 0
-  targetPixelDensity: 500
-  resolutionScalingMode: 1
+  targetPixelDensity: 250
+  resolutionScalingMode: 0
   applicationIdentifier:
     Android: com.Mampee.FuelOut
   buildNumber: {}
   AndroidBundleVersionCode: 1
-  AndroidMinSdkVersion: 22
+  AndroidMinSdkVersion: 16
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1
   aotOptions: 
