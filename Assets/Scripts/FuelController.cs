@@ -18,6 +18,7 @@ public class FuelController : MonoBehaviour {
 	public Color zeroFuelColor = Color.red;
     public float fuelUp;
     public float speed;
+    public float fuelLoss;
 
 	void Start () {
 		startEngineFuel=0f;
@@ -71,9 +72,14 @@ public class FuelController : MonoBehaviour {
     {
         if(other.CompareTag("Fuel"))
         {
+            Destroy(other.gameObject);
             reserveFuel = reserveFuel + fuelUp;
             SetEngineUI();
-            Destroy(other.gameObject);
+        }
+        if (other.CompareTag("Obstacle"))
+        {
+            engineFuel = engineFuel - fuelLoss;
+            SetEngineUI();
         }
     }
 }

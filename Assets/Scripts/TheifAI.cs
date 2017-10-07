@@ -12,7 +12,7 @@ public class TheifAI : MonoBehaviour {
 
 	void Start () {
         speed = Random.Range(startSpeed_min, startSpeed_max);
-        InvokeRepeating("CheckDistance", 3f, 0.3f);
+        InvokeRepeating("CheckDistance", 2f, 0.2f);
 	}
 
 	void Update () {
