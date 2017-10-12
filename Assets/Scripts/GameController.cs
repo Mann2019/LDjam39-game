@@ -9,8 +9,8 @@ public class GameController : MonoBehaviour {
     public GameObject thief;
     public GameObject fuelPrefab;
     public GameObject coinPrefab;
-    public GameObject bushPrefab;
     public Camera mainCamera;
+    public GameObject[] obstacles;
 
     public float roadProduceTime;
     public float roadProduceRate;
@@ -25,11 +25,12 @@ public class GameController : MonoBehaviour {
 
     public static int currentCoinValue = 0;
 
-    private Vector3 v;
-    private GameObject g;
+    private Vector3 roadPosition;
+    private GameObject road;
     private PlayerMover pm;
     private float spawnPoint;
-    //private int c;
+    private int envirFlag = 0;
+    private GameObject obstacle;
 
     void Start () {
         pm = car.GetComponent<PlayerMover>();
@@ -38,7 +39,7 @@ public class GameController : MonoBehaviour {
         InvokeRepeating("ProduceCoins", fuelProduceTime + 3f, fuelProduceRate + 3f);
         InvokeRepeating("ProduceObstacles", fuelProduceTime + 1.2f, fuelProduceRate + 1.2f);
         InvokeRepeating("MoveRoad", roadProduceTime, roadProduceRate);
-        //InvokeRepeating("ChangeEnvironment", roadProduceTime + 1f, roadProduceRate + 1f);
+        InvokeRepeating("ChangeEnvironment", roadProduceTime + 10f, roadProduceRate + 10f);
 	}
 
     private void Update()
@@ -51,19 +52,6 @@ public class GameController : MonoBehaviour {
         }
     }
 
-    /*private void ChangeEnvironment()
-    {
-        mainCamera.backgroundColor = Color.Lerp(mainCamera.backgroundColor, bGColors[c], 100f);
-        if (c>2)
-        {
-            c = 0;
-        }
-        else
-        {
-            c++;
-        }
-    }*/
-
     public void MoveRoad()
     {
         roadLead.transform.position = roadLead.transform.position + roadPos;
@@ -71,8 +59,8 @@ public class GameController : MonoBehaviour {
 
     public void GenerateRoad()
     {
-        v = roadLead.transform.position;
-        g = Instantiate(roadPrefab, v, Quaternion.identity) as GameObject;
+        roadPosition = roadLead.transform.position;
+        road = Instantiate(roadPrefab, roadPosition, Quaternion.identity) as GameObject;
     }
 
     private void ProduceFuel()
@@ -103,7 +91,15 @@ public class GameController : MonoBehaviour {
     {
         int i = Random.Range(0, spawnPoints.Length);
         spawnPoint = spawnPoints[i];
+        obstacle = obstacles[envirFlag];
         Vector3 spawnPos = new Vector3(spawnPoint, 0.0f, fuelSpawnZ + car.transform.position.z);
-        Instantiate(bushPrefab, spawnPos, Quaternion.identity);
+        Instantiate(obstacle, spawnPos, Quaternion.identity);
+    }
+
+    private void ChangeEnvironment()
+    {
+        int i = Random.Range(0, bGColors.Length);
+        envirFlag = i;
+        mainCamera.backgroundColor = Color.Lerp(mainCamera.backgroundColor, bGColors[i], Time.frameCount);
     }
 }

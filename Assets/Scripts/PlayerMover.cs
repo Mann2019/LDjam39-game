@@ -75,9 +75,9 @@ public class PlayerMover : MonoBehaviour {
         }
 
         rbt.onClick.AddListener(delegate
-       {
-           right = SetTurn(right);
-       });
+        {
+            right = SetTurn(right);
+        });
         lbt.onClick.AddListener(delegate
         {
             left = SetTurn(left);
@@ -98,8 +98,6 @@ public class PlayerMover : MonoBehaviour {
     {
         if(other.CompareTag("Enemy"))
         {
-            //UnityEditor.EditorApplication.isPlaying = false;
-            //Application.Quit();
             CancelInvoke("CountDistance");
             Destroy(other.gameObject);
         }
