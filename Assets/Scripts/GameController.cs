@@ -6,7 +6,6 @@ public class GameController : MonoBehaviour {
     public GameObject roadPrefab;
     public GameObject roadLead;
     public GameObject car;
-    public GameObject thief;
     public GameObject fuelPrefab;
     public GameObject coinPrefab;
     public Camera mainCamera;
@@ -22,6 +21,7 @@ public class GameController : MonoBehaviour {
     public int[] coinValues;
     public Text coinText;
     public Color[] bGColors;
+    public float environmentDelay = 10f;
 
     public static int currentCoinValue = 0;
 
@@ -34,11 +34,10 @@ public class GameController : MonoBehaviour {
 
     void Start () {
         pm = car.GetComponent<PlayerMover>();
-        InvokeRepeating("GenerateRoad", roadProduceTime, roadProduceRate);
+        InvokeRepeating("MoveRoad", roadProduceTime, roadProduceRate);
         InvokeRepeating("ProduceFuel", fuelProduceTime, fuelProduceRate);
         InvokeRepeating("ProduceCoins", fuelProduceTime + 3f, fuelProduceRate + 3f);
         InvokeRepeating("ProduceObstacles", fuelProduceTime + 1.2f, fuelProduceRate + 1.2f);
-        InvokeRepeating("MoveRoad", roadProduceTime, roadProduceRate);
         InvokeRepeating("ChangeEnvironment", roadProduceTime + 10f, roadProduceRate + 10f);
 	}
 
@@ -54,13 +53,9 @@ public class GameController : MonoBehaviour {
 
     public void MoveRoad()
     {
-        roadLead.transform.position = roadLead.transform.position + roadPos;
-    }
-
-    public void GenerateRoad()
-    {
         roadPosition = roadLead.transform.position;
         road = Instantiate(roadPrefab, roadPosition, Quaternion.identity) as GameObject;
+        roadLead.transform.position = roadLead.transform.position + roadPos;
     }
 
     private void ProduceFuel()
@@ -100,6 +95,6 @@ public class GameController : MonoBehaviour {
     {
         int i = Random.Range(0, bGColors.Length);
         envirFlag = i;
-        mainCamera.backgroundColor = Color.Lerp(mainCamera.backgroundColor, bGColors[i], Time.frameCount);
+        mainCamera.backgroundColor = Color.Lerp(mainCamera.backgroundColor, bGColors[i], Time.frameCount * environmentDelay);
     }
 }

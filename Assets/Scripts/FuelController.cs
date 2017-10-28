@@ -26,7 +26,7 @@ public class FuelController : MonoBehaviour {
 		engineFuel=startEngineFuel;
 		reserveFuel=startReserveFuel;
 		SetEngineUI();
-		InvokeRepeating("UseFuel", 1f, 1f);
+		InvokeRepeating("UseFuel", 0.1f, 1f);
         rb = gameObject.GetComponent<Rigidbody>();
 	}
 
