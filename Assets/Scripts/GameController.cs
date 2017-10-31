@@ -45,10 +45,10 @@ public class GameController : MonoBehaviour {
     {
         coinText.text = currentCoinValue.ToString();
 
-        if(Input.GetKeyDown(KeyCode.Escape))
+        /*if(Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
-        }
+        }*/
     }
 
     public void MoveRoad()
