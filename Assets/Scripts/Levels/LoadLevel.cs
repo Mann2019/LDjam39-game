@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -8,6 +7,7 @@ public class LoadLevel : MonoBehaviour {
 
     public GameObject loadPanel;
     public Slider loader;
+    public float waitTime;
 
 	public void LoadScene(int sceneIndex)
     {
@@ -23,7 +23,7 @@ public class LoadLevel : MonoBehaviour {
         {
             float progress = Mathf.Clamp01(operation.progress / 0.9f);
             loader.value = progress;
-            yield return null;
+            yield return waitTime;
         }
     }
 }

@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class MainMenuController : MonoBehaviour {
 
-    public GameObject QuitPanel;
+    public GameObject[] UIPanels;
     public Button[] butts;
 
     public void RemoveInteraction()
@@ -33,14 +31,17 @@ public class MainMenuController : MonoBehaviour {
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            if(QuitPanel.activeInHierarchy)
+            for (int i=0;i<UIPanels.Length;i++)
             {
-                QuitPanel.SetActive(false);
-                AddInteraction();
-            }
-            else
-            {
-                QuitPanel.SetActive(true);
+                if(UIPanels[i].activeInHierarchy)
+                {
+                    UIPanels[i].SetActive(false);
+                    AddInteraction();
+                }
+                else
+                {
+                    UIPanels[UIPanels.Length-1].SetActive(true);
+                }
             }
         }
     }

@@ -2,7 +2,7 @@
 
 public class CollectCoins : MonoBehaviour {
 
-    private void OnTriggerEnter(Collider other)
+    /*private void OnTriggerEnter(Collider other)
     {
         //This is to  increment coin values..
         if (other.CompareTag("Player"))
@@ -10,5 +10,5 @@ public class CollectCoins : MonoBehaviour {
             GameController.currentCoinValue += 1;
             Destroy(gameObject);
         }
-    }
+    }*/
 }

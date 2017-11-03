@@ -18,4 +18,14 @@ public class CameraController : MonoBehaviour {
         camSpeed = PlayerMover.resultantFuel;
         transform.Translate(Vector3.forward * Time.deltaTime * -speed * camSpeed, Space.World);
     }
+
+    public void StopIt()
+    {
+        CancelInvoke();
+    }
+
+    public void RestartInvokes()
+    {
+        InvokeRepeating("SpeedUp", 0.0f, 30f);
+    }
 }

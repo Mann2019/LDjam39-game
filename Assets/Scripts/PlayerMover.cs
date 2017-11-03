@@ -14,19 +14,22 @@ public class PlayerMover : MonoBehaviour {
     public Button rightButton;
     public Button leftButton;
     public Text distanceCounter;
+    public AudioClip[] audios;
 
     private FuelController fc;
 	private Rigidbody rb;
     private Button rbt;
     private Button lbt;
     private int distance = 0;
-    private float distFactor = 0.2f;
+    private float distFactor = 0.1f;
+    private AudioSource audioSource;
 
 	void Start () {
 		rb = gameObject.GetComponent<Rigidbody>();
 		fc = gameObject.GetComponent<FuelController>();
         rbt = rightButton.GetComponent<Button>();
         lbt = leftButton.GetComponent<Button>();
+        audioSource = gameObject.GetComponent<AudioSource>();
         InvokeRepeating("SpeedUp", 30f, 30f);
         InvokeRepeating("CountDistance", 3f, distFactor);
 	}
@@ -50,7 +53,6 @@ public class PlayerMover : MonoBehaviour {
 
     void Update() {
         resultantFuel = fc.resultingFuel + 0.5f;
-        distFactor = distFactor - Mathf.Abs(fc.resultingFuel)/100;
         transform.Translate(Vector3.forward * Time.deltaTime * -speed * resultantFuel, Space.Self);
         transform.position = new Vector3(
             Mathf.Clamp(transform.position.x, -xMin, xMax),
@@ -101,6 +103,13 @@ public class PlayerMover : MonoBehaviour {
             CancelInvoke("CountDistance");
             Destroy(other.gameObject);
         }
+        if (other.CompareTag("Coin"))
+        {
+            GameController.currentCoinValue += 1;
+            Destroy(other.gameObject);
+            //audioSource.clip = audios[0];
+            //audioSource.Play();
+        }
     }
     private void OnTriggerExit(Collider other)
     {
@@ -108,5 +117,16 @@ public class PlayerMover : MonoBehaviour {
         {
             Destroy(other.gameObject);
         }
+    }
+
+    public void StopIt()
+    {
+        CancelInvoke();
+    }
+
+    public void RestartInvokes()
+    {
+        InvokeRepeating("SpeedUp", 30f, 30f);
+        InvokeRepeating("CountDistance", 3f, distFactor);
     }
 }

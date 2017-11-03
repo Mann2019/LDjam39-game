@@ -25,6 +25,8 @@ public class GameController : MonoBehaviour {
 
     public static int currentCoinValue = 0;
 
+    public Button[] butts;
+
     private Vector3 roadPosition;
     private GameObject road;
     private PlayerMover pm;
@@ -38,17 +40,12 @@ public class GameController : MonoBehaviour {
         InvokeRepeating("ProduceFuel", fuelProduceTime, fuelProduceRate);
         InvokeRepeating("ProduceCoins", fuelProduceTime + 3f, fuelProduceRate + 3f);
         InvokeRepeating("ProduceObstacles", fuelProduceTime + 1.2f, fuelProduceRate + 1.2f);
-        InvokeRepeating("ChangeEnvironment", roadProduceTime + 10f, roadProduceRate + 10f);
+        InvokeRepeating("ChangeEnvironment", roadProduceTime + 20f, roadProduceRate + 20f);
 	}
 
     private void Update()
     {
         coinText.text = currentCoinValue.ToString();
-
-        /*if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            Application.Quit();
-        }*/
     }
 
     public void MoveRoad()
@@ -96,5 +93,41 @@ public class GameController : MonoBehaviour {
         int i = Random.Range(0, bGColors.Length);
         envirFlag = i;
         mainCamera.backgroundColor = Color.Lerp(mainCamera.backgroundColor, bGColors[i], Time.frameCount * environmentDelay);
+    }
+
+    public void RemoveInteraction()
+    {
+        for (int i = 0; i < butts.Length; i++)
+        {
+            butts[i].interactable = false;
+        }
+    }
+
+    public void AddInteraction()
+    {
+        for (int i = 0; i < butts.Length; i++)
+        {
+            butts[i].interactable = true;
+        }
+    }
+
+    public void StopIt()
+    {
+        CancelInvoke();
+    }
+
+    public void RestartInvokes()
+    {
+        InvokeRepeating("MoveRoad", 0.0f, roadProduceRate);
+        InvokeRepeating("ProduceFuel", 0.0f, fuelProduceRate);
+        InvokeRepeating("ProduceCoins", 3f, fuelProduceRate + 3f);
+        InvokeRepeating("ProduceObstacles", 1.2f, fuelProduceRate + 1.2f);
+        InvokeRepeating("ChangeEnvironment", 20f, roadProduceRate + 20f);
+    }
+
+    public void ResetText()
+    {
+        currentCoinValue = 0;
+        coinText.text = currentCoinValue.ToString();
     }
 }

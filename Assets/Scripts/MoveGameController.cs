@@ -27,4 +27,14 @@ public class MoveGameController : MonoBehaviour {
             Destroy(other.gameObject);
         }
     }
+
+    public void StopIt()
+    {
+        CancelInvoke();
+    }
+
+    public void RestartInvokes()
+    {
+        InvokeRepeating("SpeedUp", 0.0f, 30f);
+    }
 }

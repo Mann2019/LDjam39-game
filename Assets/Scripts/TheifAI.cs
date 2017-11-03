@@ -15,6 +15,7 @@ public class TheifAI : MonoBehaviour {
     private RaycastHit hit;
     private Ray backRay;
     private float dist;
+    private float progress;
 
 	void Start () {
         speed = Random.Range(startSpeed_min, startSpeed_max);
@@ -26,7 +27,8 @@ public class TheifAI : MonoBehaviour {
     {
         transform.Translate(Vector3.forward * Time.deltaTime * -speed, Space.World);
         dist = Vector3.Distance(policeCar.position, transform.position);
-        targetDistanceSlider.value = dist;
+        progress = Mathf.Clamp01(dist/100f);
+        targetDistanceSlider.value = progress;
     }
 
     void CheckDistance()
@@ -61,5 +63,15 @@ public class TheifAI : MonoBehaviour {
             speed = speed - speedFactor;
             speedFlag = 0;
         }
+    }
+
+    public void StopIt()
+    {
+        CancelInvoke();
+    }
+
+    public void RestartInvokes()
+    {
+        InvokeRepeating("CheckDistance", 0.0f, 0.2f);
     }
 }

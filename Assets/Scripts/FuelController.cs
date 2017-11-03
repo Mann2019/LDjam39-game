@@ -6,8 +6,9 @@ public class FuelController : MonoBehaviour {
 	private float startReserveFuel;
 	private float startEngineFuel;
     private Rigidbody rb;
+    private float passed = 0f;
 
-	public float reserveFuel;
+    public float reserveFuel;
 	public float engineFuel;
 	public float resultingFuel;
 	public Image fillImageEngine;
@@ -19,6 +20,7 @@ public class FuelController : MonoBehaviour {
     public float fuelUp;
     public float speed;
     public float fuelLoss;
+    public float passedTime;
 
 	void Start () {
 		startEngineFuel=0f;
@@ -26,17 +28,17 @@ public class FuelController : MonoBehaviour {
 		engineFuel=startEngineFuel;
 		reserveFuel=startReserveFuel;
 		SetEngineUI();
-		InvokeRepeating("UseFuel", 0.1f, 1f);
+		//InvokeRepeating("UseFuel", 0.1f, 0.1f);
         rb = gameObject.GetComponent<Rigidbody>();
 	}
 
 	public void UseFuel() {
-        engineFuel = engineFuel-10f;
+        engineFuel = engineFuel-0.1f;
 		SetEngineUI();
 		resultingFuel = engineFuel/50f;
 	}
 
-	void SetEngineUI() {
+	public void SetEngineUI() {
 		reserveSlider.value = reserveFuel;
 		engineSlider.value = engineFuel;
 		fillImageEngine.color = Color.Lerp(zeroFuelColor, fullFuelColor, engineFuel/100f);
@@ -46,16 +48,12 @@ public class FuelController : MonoBehaviour {
 	void Update () {
         reserveFuel = Mathf.Clamp(reserveFuel, 0f, 100f);
         engineFuel = Mathf.Clamp(engineFuel, 0f, 100f);
-        //if (Input.GetKeyDown(KeyCode.Space)) {
-        /*if (Input.GetTouch(0).phase == TouchPhase.Began) {
-            if (reserveFuel>0f)
-            {
-                engineFuel = engineFuel + 10f;
-                reserveFuel = reserveFuel - 10f;
-                SetEngineUI();
-                //rb.AddForce(Vector3.forward * Time.deltaTime * speed * resultingFuel);
-            }
-		}*/
+        passed = passed + Time.deltaTime;
+        if(passed>passedTime)
+        {
+            UseFuel();
+            passed = 0f;
+        }
 	}
 
     public void PumpFuel()
@@ -81,5 +79,15 @@ public class FuelController : MonoBehaviour {
             engineFuel = engineFuel - fuelLoss;
             SetEngineUI();
         }
+    }
+
+    public void StopIt()
+    {
+        CancelInvoke();
+    }
+
+    public void RestartInvokes()
+    {
+        InvokeRepeating("UseFuel", 0.1f, 1f);
     }
 }
