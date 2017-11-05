@@ -20,10 +20,10 @@ public class MoveGameController : MonoBehaviour {
         transform.Translate(Vector3.forward*Time.deltaTime*-speed*moveSpeed, Space.World);
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnCollisionExit(Collision collision)
     {
-        if(!(other.CompareTag("Enemy")||other.CompareTag("Player")))
-        {
+        Collider other = collision.collider;
+        if(!((other.CompareTag("Enemy"))||(other.CompareTag("Player")))) {
             Destroy(other.gameObject);
         }
     }

@@ -6,7 +6,6 @@ public class FuelController : MonoBehaviour {
 	private float startReserveFuel;
 	private float startEngineFuel;
     private Rigidbody rb;
-    private float passed = 0f;
 
     public float reserveFuel;
 	public float engineFuel;
@@ -18,9 +17,8 @@ public class FuelController : MonoBehaviour {
 	public Color fullFuelColor = Color.green;
 	public Color zeroFuelColor = Color.red;
     public float fuelUp;
-    public float speed;
     public float fuelLoss;
-    public float passedTime;
+    public float fueluseRate;
 
 	void Start () {
 		startEngineFuel=0f;
@@ -28,7 +26,7 @@ public class FuelController : MonoBehaviour {
 		engineFuel=startEngineFuel;
 		reserveFuel=startReserveFuel;
 		SetEngineUI();
-		//InvokeRepeating("UseFuel", 0.1f, 0.1f);
+		InvokeRepeating("UseFuel", 0.1f, fueluseRate);
         rb = gameObject.GetComponent<Rigidbody>();
 	}
 
@@ -48,17 +46,11 @@ public class FuelController : MonoBehaviour {
 	void Update () {
         reserveFuel = Mathf.Clamp(reserveFuel, 0f, 100f);
         engineFuel = Mathf.Clamp(engineFuel, 0f, 100f);
-        passed = passed + Time.deltaTime;
-        if(passed>passedTime)
-        {
-            UseFuel();
-            passed = 0f;
-        }
 	}
 
     public void PumpFuel()
     {
-        if (reserveFuel > 0f)
+        if (reserveFuel > 0f && engineFuel < 100f)
         {
             engineFuel = engineFuel + 10f;
             reserveFuel = reserveFuel - 10f;

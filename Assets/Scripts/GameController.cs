@@ -20,11 +20,9 @@ public class GameController : MonoBehaviour {
     public float[] spawnPoints;
     public int[] coinValues;
     public Text coinText;
-    public Color[] bGColors;
-    public float environmentDelay = 10f;
-
+    public float[] envSpawnPoints;
+    public EnvironmentPrefabs[] environment;
     public static int currentCoinValue = 0;
-
     public Button[] butts;
 
     private Vector3 roadPosition;
@@ -33,14 +31,16 @@ public class GameController : MonoBehaviour {
     private float spawnPoint;
     private int envirFlag = 0;
     private GameObject obstacle;
+    private GameObject envSprite;
 
     void Start () {
         pm = car.GetComponent<PlayerMover>();
         InvokeRepeating("MoveRoad", roadProduceTime, roadProduceRate);
         InvokeRepeating("ProduceFuel", fuelProduceTime, fuelProduceRate);
         InvokeRepeating("ProduceCoins", fuelProduceTime + 3f, fuelProduceRate + 3f);
-        InvokeRepeating("ProduceObstacles", fuelProduceTime + 1.2f, fuelProduceRate + 1.2f);
+        InvokeRepeating("ProduceObstacles", fuelProduceTime + 1.5f, fuelProduceRate + 1.5f);
         InvokeRepeating("ChangeEnvironment", roadProduceTime + 20f, roadProduceRate + 20f);
+        InvokeRepeating("ProduceEnvironment", fuelProduceTime + 2f, fuelProduceRate + 2f);
 	}
 
     private void Update()
@@ -88,11 +88,21 @@ public class GameController : MonoBehaviour {
         Instantiate(obstacle, spawnPos, Quaternion.identity);
     }
 
+    private void ProduceEnvironment()
+    {
+        int i = Random.Range(0, envSpawnPoints.Length);
+        float spawnPoint = envSpawnPoints[i];
+        int j = Random.Range(0, environment[envirFlag].environmentPrefabs.Length);
+        envSprite = environment[envirFlag].environmentPrefabs[j];
+        Vector3 spawnPos = new Vector3(spawnPoint, 1f, fuelSpawnZ + car.transform.position.z);
+        Instantiate(envSprite, spawnPos, Quaternion.identity);
+    }
+
     private void ChangeEnvironment()
     {
-        int i = Random.Range(0, bGColors.Length);
+        int i = Random.Range(0, environment.Length);
         envirFlag = i;
-        mainCamera.backgroundColor = Color.Lerp(mainCamera.backgroundColor, bGColors[i], Time.frameCount * environmentDelay);
+        mainCamera.backgroundColor = Color.Lerp(mainCamera.backgroundColor, environment[i].bGColor, Time.frameCount);
     }
 
     public void RemoveInteraction()

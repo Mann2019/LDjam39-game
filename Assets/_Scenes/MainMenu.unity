@@ -868,7 +868,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &398881491
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2382,7 +2382,7 @@ Prefab:
     - target: {fileID: 224905716995118310, guid: a53fcea9ffcc60c4684c536e02716ae3,
         type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 224905716995118310, guid: a53fcea9ffcc60c4684c536e02716ae3,
         type: 2}
@@ -2434,14 +2434,6 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 1370323788407550, guid: a53fcea9ffcc60c4684c536e02716ae3, type: 2}
-      propertyPath: m_Name
-      value: LoadingPanel
-      objectReference: {fileID: 0}
-    - target: {fileID: 1370323788407550, guid: a53fcea9ffcc60c4684c536e02716ae3, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 224890259742692958, guid: a53fcea9ffcc60c4684c536e02716ae3,
         type: 2}
       propertyPath: m_AnchorMax.y
@@ -2452,10 +2444,9 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114458451898050248, guid: a53fcea9ffcc60c4684c536e02716ae3,
-        type: 2}
-      propertyPath: m_Color.a
-      value: 1
+    - target: {fileID: 1370323788407550, guid: a53fcea9ffcc60c4684c536e02716ae3, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a53fcea9ffcc60c4684c536e02716ae3, type: 2}
