@@ -2,30 +2,21 @@
 
 public class CameraController : MonoBehaviour {
 
-	public float speed;
-	private float camSpeed;
+    public Transform target;
+    public float zOffset;
+    public float smoothSpeed = 0.2f;
 
-	void Start() {
-        InvokeRepeating("SpeedUp", 30f, 30f);
-	}
-
-    void SpeedUp()
-    {
-        speed = speed + PlayerMover.speedUp;
-    }
+    private Vector3 currVelo;
+    private Vector3 newPos;
 
 	void LateUpdate () {
-        camSpeed = PlayerMover.resultantFuel;
-        transform.Translate(Vector3.forward * Time.deltaTime * -speed * camSpeed, Space.World);
-    }
 
-    public void StopIt()
-    {
-        CancelInvoke();
-    }
-
-    public void RestartInvokes()
-    {
-        InvokeRepeating("SpeedUp", 0.0f, 30f);
+        if (target)
+        {
+            newPos = new Vector3(transform.position.x, transform.position.y, target.position.z+zOffset);
+            transform.position = Vector3.SmoothDamp(transform.position, newPos, ref currVelo, smoothSpeed * Time.deltaTime);
+            //transform.position = newPos;
+            //transform.LookAt(target);
+        }
     }
 }

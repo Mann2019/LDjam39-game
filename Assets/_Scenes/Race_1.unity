@@ -118,7 +118,6 @@ GameObject:
   - component: {fileID: 1281871}
   - component: {fileID: 1281875}
   - component: {fileID: 1281872}
-  - component: {fileID: 1281876}
   - component: {fileID: 1281873}
   m_Layer: 0
   m_Name: Game Controller
@@ -133,12 +132,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1281870}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 40}
+  m_LocalRotation: {x: 0.04494348, y: -0.9512512, z: 0.16773133, w: -0.25488704}
+  m_LocalPosition: {x: 22.660255, y: -12.69145, z: -15.864735}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_Father: {fileID: 294077226}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1281872
 MonoBehaviour:
@@ -151,21 +150,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c036a1b6bccc84448c3798c394bd52c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roadPrefab: {fileID: 1883870256336696, guid: e54001a42c13fbf4fbf4af2eb1d5beb0, type: 2}
-  roadLead: {fileID: 1534728563}
-  car: {fileID: 1694841368}
-  fuelPrefab: {fileID: 1548265536552986, guid: 906c0fd0e2e7d0846abced42cfa3944f, type: 2}
-  coinPrefab: {fileID: 1466075961337732, guid: 53e554fa3f0c9074a9c41b8a7d0ed5f8, type: 2}
   mainCamera: {fileID: 294077225}
-  obstacles:
-  - {fileID: 1446312488911460, guid: d4bbebdb49adcf6438d368a7b0e1ebfd, type: 2}
-  - {fileID: 1584477487507196, guid: cf3823643fe940a48bcb6fdfa1ddc6f6, type: 2}
+  gamePrefabs:
+  - {fileID: 1694841368}
+  - {fileID: 1534728563}
+  - {fileID: 1883870256336696, guid: e54001a42c13fbf4fbf4af2eb1d5beb0, type: 2}
+  - {fileID: 1548265536552986, guid: 906c0fd0e2e7d0846abced42cfa3944f, type: 2}
+  - {fileID: 1466075961337732, guid: 53e554fa3f0c9074a9c41b8a7d0ed5f8, type: 2}
   roadProduceTime: 3
   roadProduceRate: 3
   fuelProduceTime: 2
   fuelProduceRate: 2
   fuelSpawnZ: -50
-  roadPos: {x: 0, y: 0, z: -60}
+  roadPosZ: -60
   spawnPoints:
   - 1.1
   - 0.1
@@ -173,17 +170,20 @@ MonoBehaviour:
   coinValues: 040000000500000006000000
   coinText: {fileID: 16889366}
   envSpawnPoints:
-  - -4
   - -3
   - -2.5
   - 4
   - 5
-  - 6
   environment:
   - bGColor: {r: 0.5058824, g: 0.9058824, b: 0.3803922, a: 1}
+    obstacles:
+    - {fileID: 1446312488911460, guid: d4bbebdb49adcf6438d368a7b0e1ebfd, type: 2}
     environmentPrefabs:
     - {fileID: 1615091951645308, guid: 8c06ff0e51215fa4f862f006edcc833c, type: 2}
+    - {fileID: 1921114459455652, guid: b3389d577aeb06143a133e9db52b8f21, type: 2}
   - bGColor: {r: 1, g: 0.89411765, b: 0.3019608, a: 1}
+    obstacles:
+    - {fileID: 1584477487507196, guid: cf3823643fe940a48bcb6fdfa1ddc6f6, type: 2}
     environmentPrefabs:
     - {fileID: 1615091951645308, guid: 8c06ff0e51215fa4f862f006edcc833c, type: 2}
   butts:
@@ -215,20 +215,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 15, y: 4, z: 60}
-  m_Center: {x: 0, y: 0, z: -10}
---- !u!114 &1281876
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1281870}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66019f83c3262ca4bb7fe6b39708cea8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 6
+  m_Size: {x: 15, y: 4, z: 40}
+  m_Center: {x: 0, y: 0, z: -20}
 --- !u!1 &16889364
 GameObject:
   m_ObjectHideFlags: 0
@@ -653,17 +641,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1281876}
-        m_MethodName: StopIt
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 294077227}
         m_MethodName: StopIt
         m_Mode: 1
@@ -711,17 +688,6 @@ MonoBehaviour:
       - m_Target: {fileID: 1281872}
         m_MethodName: RemoveInteraction
         m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1281876}
-        m_MethodName: set_enabled
-        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -981,17 +947,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1281876}
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
       - m_Target: {fileID: 1541021131}
         m_MethodName: set_enabled
         m_Mode: 6
@@ -1059,17 +1014,6 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 1541021131}
-        m_MethodName: RestartInvokes
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1281876}
         m_MethodName: RestartInvokes
         m_Mode: 1
         m_Arguments:
@@ -1262,7 +1206,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.1
+  near clip plane: 0.01
   far clip plane: 5000
   field of view: 40
   orthographic: 1
@@ -1278,7 +1222,7 @@ Camera:
   m_HDR: 1
   m_AllowMSAA: 1
   m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
+  m_OcclusionCulling: 0
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
   m_StereoMirrorMode: 0
@@ -1289,9 +1233,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 294077221}
   m_LocalRotation: {x: -0.044943485, y: 0.9512512, z: -0.16773133, w: -0.25488704}
-  m_LocalPosition: {x: 6, y: 4.5, z: 5}
+  m_LocalPosition: {x: 10, y: 7.5, z: 12}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1281871}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -340, y: -150, z: 0}
@@ -1306,7 +1251,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f85a9b1e320131f409c0be0eac44935e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
+  target: {fileID: 1694841369}
+  zOffset: 11
+  smoothSpeed: 0.25
 --- !u!1 &339508107
 GameObject:
   m_ObjectHideFlags: 0
@@ -2561,7 +2508,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &854364123
 GameObject:
@@ -3967,7 +3914,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4576925777047974, guid: e54001a42c13fbf4fbf4af2eb1d5beb0, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e54001a42c13fbf4fbf4af2eb1d5beb0, type: 2}
@@ -4174,7 +4121,7 @@ Transform:
   - {fileID: 1718631701}
   - {fileID: 681598088}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1541021129
 GameObject:
@@ -4209,7 +4156,7 @@ Transform:
   - {fileID: 2026086803}
   - {fileID: 959939701}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1541021131
 MonoBehaviour:
@@ -4531,14 +4478,14 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1694841368}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.1, y: 0.235, z: 1.1}
+  m_LocalPosition: {x: 1.1, y: 0.235, z: 1}
   m_LocalScale: {x: 0.2, y: 0.22, z: 0.22}
   m_Children:
   - {fileID: 1712634955}
   - {fileID: 1549387955}
   - {fileID: 759177139}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1694841370
 BoxCollider:
@@ -5263,7 +5210,7 @@ RectTransform:
   - {fileID: 545635173}
   - {fileID: 639599799}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
